@@ -99,6 +99,9 @@ class Stall:
         else:
             self.inventory[food_name] = quantity
 
+    def compute_cost(self, quantity):
+        return (quantity * self.cost)
+
 class TestAllMethods(unittest.TestCase):
     
     def setUp(self):
