@@ -226,17 +226,42 @@ class TestAllMethods(unittest.TestCase):
     
 ### Write main function
 def main():
-    #Create different objects 
+    #Create different objects
+    invent_1 = {'Walking Taco': 15, 'Burrito': 10, 'Quesadilla': 5}
+    invent_2 = {'Smoothie': 8, 'Banana Bread': 20, 'Parfait': 14}
+
+    cust_1 = Customer("Adam", 105)
+    cust_2 = Customer("Beth", 74)
+    cust_3 = Customer("Charlie", 60)
+
+    stall_1 = Stall("Sabrosa", invent_1, cost=6)
+    stall_2 = Stall("Morningside", invent_2, cost=10)
+
+    cashier_1 = Cashier("Dave", [stall_1])
+    cashier_2 = Cashier("Eddie", [stall_1, stall_2]) 
 
     #Try all cases in the validate_order function
     #Below you need to have *each customer instance* try the four cases
     #case 1: the cashier does not have the stall 
-    
+    print("Cases where cashier does not have the stall:")
+    cust_1.validate_order(cashier_1, stall_2, "Parfait", 12)
+    cust_2.validate_order(cashier_1, stall_2, "Parfait", 12)
+    cust_3.validate_order(cashier_1, stall_2, "Banana Bread", 3)
     #case 2: the casher has the stall, but not enough ordered food or the ordered food item
-    
-    #case 3: the customer does not have enough money to pay for the order: 
-    
+    print("Cases where cashier has the stall, but not enough ordered food or the ordered food item:")
+    cust_1.validate_order(cashier_1, stall_1, "Parfait", 2)
+    cust_2.validate_order(cashier_2, stall_2, "Banana Bread", 30)
+    cust_3.validate_order(cashier_2, stall_1, "Quesadilla", 6)
+    #case 3: the customer does not have enough money to pay for the order:
+    print("Cases where the customer does not have enough money to pay for the order:") 
+    cust_1.validate_order(cashier_2, stall_2, "Banana Bread", 11)
+    cust_2.validate_order(cashier_2, stall_2, "Parfait", 9)
+    cust_3.validate_order(cashier_1, stall_1, "Walking Taco", 11)
     #case 4: the customer successfully places an order
+    print("Cases where the orders go though. Nothing should be printed after this:")
+    cust_1.validate_order(cashier_1, stall_1, "Walking Taco", 2)
+    cust_2.validate_order(cashier_2, stall_1, "Quesadilla", 2)
+    cust_3.validate_order(cashier_2, stall_2, "Banana Bread", 3)
 
     pass
 
