@@ -217,7 +217,12 @@ class TestAllMethods(unittest.TestCase):
 
     # Test if a customer can add money to their wallet
     def test_reload_money(self):
-        pass
+        print("test_reloud_money: starting with not enough-")
+        self.f1.validate_order(self.c1,self.s1, "Burger", 20)
+        print("Adding money. Customer should have enough to buy 20 burgers so 20 will remain in Stall's inventory.")
+        self.f1.reload_money(102)
+        self.f1.validate_order(self.c1, self.s1, "Burger", 20)
+        print(self.s1__str__())
     
 ### Write main function
 def main():
