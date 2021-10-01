@@ -85,6 +85,13 @@ class Stall:
         else:
             pass
 
+    def has_item(self, food_name, quantity):
+        if not(food_name in self.inventory):
+            return False
+        elif self.inventory[food_name] >= quantity:
+            return True
+        else:
+            return False
 
 class TestAllMethods(unittest.TestCase):
     
