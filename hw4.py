@@ -102,6 +102,14 @@ class Stall:
     def compute_cost(self, quantity):
         return (quantity * self.cost)
 
+    def __str__(self):
+        keys = ""
+        for item in self.inventory:
+            keys = keys + item + ","
+        keys = keys[0:-2]
+        keys = keys.lower()
+        return "Hello, we are " + self.name + ". This is the current menu" + keys + ". We charge $" + str(self.cost) + " per item. We have $" + str(self.earnings) + " in total."
+
 class TestAllMethods(unittest.TestCase):
     
     def setUp(self):
