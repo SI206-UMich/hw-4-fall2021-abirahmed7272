@@ -77,8 +77,13 @@ class Stall:
         self.inventory = inventory
         self.cost = cost
         self.earnings = earnings
-    
-    pass
+
+    def process_order(self, food_name, quantity):
+        if self.has_item(food_name, quantity):
+            self.inventory[food_name] = self.inventory[food_name] - quantity
+            self.earnings = self.earnings + (quantity * self.cost)
+        else:
+            pass
 
 
 class TestAllMethods(unittest.TestCase):
