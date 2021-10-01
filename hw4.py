@@ -202,6 +202,7 @@ class TestAllMethods(unittest.TestCase):
 		# case 1: test if a customer doesn't have enough money in their wallet to order
         print("test_validate_order case 1:")
         self.f1.validate_order(self.c1, self.s1, "Burger", 20)
+        print("Should print: Don't have enough money for that :( Please reload more money!")
 		# case 2: test if the stall doesn't have enough food left in stock
         print("test_validate_order case 2:")
         self.s2.stock_up("Pizza", 2)
