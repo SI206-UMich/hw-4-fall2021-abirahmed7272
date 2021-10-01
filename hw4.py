@@ -27,8 +27,9 @@ class Customer:
     
     # Submit_order takes a cashier, a stall and an amount as parameters, 
     # it deducts the amount from the customer’s wallet and calls the receive_payment method on the cashier object
-    def submit_order(self, cashier, stall, amount): 
-        pass
+    def submit_order(self, cashier, stall, amount):
+        self.wallet = self.wallet - amount
+        cashier.receive_payment(stall, amount)
 
     # The __str__ method prints the customer's information.    
     def __str__(self):
@@ -201,6 +202,8 @@ class TestAllMethods(unittest.TestCase):
 	# Test validate order
     def test_validate_order(self):
 		# case 1: test if a customer doesn't have enough money in their wallet to order
+        print("test_validate_order case 1:")
+        self.f1.validate_order(self.c1, self.s1, "Burger", 20)
 		# case 2: test if the stall doesn't have enough food left in stock
 
 		# case 3: check if the cashier can order item from that stall
