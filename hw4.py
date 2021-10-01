@@ -93,6 +93,12 @@ class Stall:
         else:
             return False
 
+    def stock_up(self, food_name, quantity):
+        if food_name in self.inventory:
+            self.inventory[food_name] = self.inventory[food_name] + quantity
+        else:
+            self.inventory[food_name] = quantity
+
 class TestAllMethods(unittest.TestCase):
     
     def setUp(self):
